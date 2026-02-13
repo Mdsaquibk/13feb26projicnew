@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SuperAdmin Login</title>
+  </head>
+  <body>
+    <h1>SuperAdmin Login</h1>
+    <% if (error) { %>
+      <p style="color:red"><%= error %></p>
+    <% } %>
+    <form method="POST" action="/superadmin/login">
+      <label>Email: <input name="email" /></label>
+      <label>Password: <input name="password" type="password" /></label>
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>

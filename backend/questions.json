@@ -1,0 +1,578 @@
+[
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are the main features of Java?",
+    "detailedAnswer": "Java is object-oriented, platform independent, secure, robust, portable, multithreaded and supports automatic garbage collection.",
+    "tags": ["java", "basics", "features"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is JVM?",
+    "detailedAnswer": "JVM (Java Virtual Machine) executes Java bytecode and provides platform independence.",
+    "tags": ["java", "jvm"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Reverse a string in Java.",
+    "detailedAnswer": "String rev = new StringBuilder(str).reverse().toString();",
+    "tags": ["java", "string"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Check if number is even or odd.",
+    "detailedAnswer": "if(num % 2 == 0) print Even else Odd.",
+    "tags": ["java", "logic"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is encapsulation?",
+    "detailedAnswer": "Encapsulation is bundling data and methods together, hiding internal details.",
+    "tags": ["java", "oops"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Find factorial of a number.",
+    "detailedAnswer": "int fact = 1; for(int i=1; i<=n; i++) fact*=i;",
+    "tags": ["java", "math"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain OOP principles.",
+    "detailedAnswer": "Encapsulation, Abstraction, Inheritance and Polymorphism are the core OOP principles.",
+    "tags": ["java", "oops"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Check prime number.",
+    "detailedAnswer": "Loop from 2 to sqrt(n) and check divisibility.",
+    "tags": ["java", "prime"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is inheritance?",
+    "detailedAnswer": "Inheritance allows reusing code by deriving one class from another using extends keyword.",
+    "tags": ["java", "oops"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Count vowels in a string.",
+    "detailedAnswer": "Loop through string and count a,e,i,o,u characters.",
+    "tags": ["java", "string"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is polymorphism?",
+    "detailedAnswer": "Polymorphism allows objects to take multiple forms via method overriding and overloading.",
+    "tags": ["java", "oops"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Fibonacci series up to n.",
+    "detailedAnswer": "int a=0, b=1; while(a<=n) {print(a); int c=a+b; a=b; b=c;}",
+    "tags": ["java", "series"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain multithreading.",
+    "detailedAnswer": "Multithreading allows concurrent execution using Thread class or Runnable interface.",
+    "tags": ["java", "multithreading"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement Singleton pattern.",
+    "detailedAnswer": "Private constructor, static instance and synchronized getInstance method.",
+    "tags": ["java", "design-pattern"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is exception handling?",
+    "detailedAnswer": "Try-catch-finally blocks to handle errors gracefully without crashing.",
+    "tags": ["java", "exceptions"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement observer pattern.",
+    "detailedAnswer": "Create Subject with attach/detach/notify methods and Observer interface.",
+    "tags": ["java", "design-pattern"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain garbage collection.",
+    "detailedAnswer": "Automatic memory management removes unused objects. Triggered by System.gc() or JVM.",
+    "tags": ["java", "memory"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement producer-consumer pattern.",
+    "detailedAnswer": "Wait-notify methods for synchronization between threads.",
+    "tags": ["java", "multithreading"]
+  },
+  {
+    "category": "Java",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are collections framework?",
+    "detailedAnswer": "ArrayList, HashMap, HashSet, LinkedList etc provide data structure implementations.",
+    "tags": ["java", "collections"]
+  },
+  {
+    "category": "Java",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement custom HashMap.",
+    "detailedAnswer": "Use array of LinkedLists with hash function to handle collisions.",
+    "tags": ["java", "data-structure"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is MERN stack?",
+    "detailedAnswer": "MongoDB, Express.js, React.js and Node.js full-stack JavaScript framework.",
+    "tags": ["mern", "stack"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Create simple Express server.",
+    "detailedAnswer": "const express=require('express'); const app=express(); app.listen(5000);",
+    "tags": ["mern", "express"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is React?",
+    "detailedAnswer": "Facebook's library for building user interfaces using components and JSX.",
+    "tags": ["mern", "react"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Create functional React component.",
+    "detailedAnswer": "const App = () => <div>Hello</div>; export default App;",
+    "tags": ["mern", "react"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is MongoDB?",
+    "detailedAnswer": "NoSQL database storing data in BSON format with flexible schemas.",
+    "tags": ["mern", "mongodb"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Insert document in MongoDB.",
+    "detailedAnswer": "db.collection.insertOne({name: 'John', age: 25});",
+    "tags": ["mern", "mongodb"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain JWT authentication.",
+    "detailedAnswer": "JWT is token-based authentication using signed JSON tokens.",
+    "tags": ["mern", "jwt"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Create REST API endpoint.",
+    "detailedAnswer": "app.get('/users', (req, res) => { res.json([...]); });",
+    "tags": ["mern", "express"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is React hooks?",
+    "detailedAnswer": "Functions like useState, useEffect that let you use state in functional components.",
+    "tags": ["mern", "react"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Use useState hook.",
+    "detailedAnswer": "const [count, setCount] = useState(0);",
+    "tags": ["mern", "react"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain async/await.",
+    "detailedAnswer": "Keywords for handling asynchronous operations in cleaner way than callbacks.",
+    "tags": ["mern", "javascript"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Fetch data with async/await.",
+    "detailedAnswer": "const data = await fetch('/api').then(r => r.json());",
+    "tags": ["mern", "javascript"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Implement role-based authorization.",
+    "detailedAnswer": "Check user role from decoded JWT and allow access accordingly.",
+    "tags": ["mern", "authorization"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Create middleware for authentication.",
+    "detailedAnswer": "Verify JWT token, decode it and attach user to request object.",
+    "tags": ["mern", "express"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is Redux?",
+    "detailedAnswer": "State management library for managing complex application state.",
+    "tags": ["mern", "redux"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Create Redux action and reducer.",
+    "detailedAnswer": "export const INCREMENT = 'INCREMENT'; const reducer = (state, action) => {...}",
+    "tags": ["mern", "redux"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain CORS.",
+    "detailedAnswer": "Cross-Origin Resource Sharing allows requests from different domains.",
+    "tags": ["mern", "security"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement pagination.",
+    "detailedAnswer": "Use skip and limit: db.find().skip(page*size).limit(size);",
+    "tags": ["mern", "mongodb"]
+  },
+  {
+    "category": "MERN",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is middleware?",
+    "detailedAnswer": "Functions that execute during request-response cycle in Express.",
+    "tags": ["mern", "express"]
+  },
+  {
+    "category": "MERN",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Create custom middleware.",
+    "detailedAnswer": "app.use((req, res, next) => { console.log('request'); next(); });",
+    "tags": ["mern", "express"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is Python?",
+    "detailedAnswer": "Python is an interpreted high-level programming language known for simplicity.",
+    "tags": ["python", "basics"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Check palindrome.",
+    "detailedAnswer": "if word == word[::-1]: print('Palindrome')",
+    "tags": ["python", "string"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What are Python data types?",
+    "detailedAnswer": "int, float, string, list, tuple, dict, set, bool.",
+    "tags": ["python", "basics"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Create list and append elements.",
+    "detailedAnswer": "my_list = [1, 2, 3]; my_list.append(4);",
+    "tags": ["python", "list"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is a function?",
+    "detailedAnswer": "Reusable block of code that performs specific task.",
+    "tags": ["python", "functions"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Define and call function.",
+    "detailedAnswer": "def greet(name): return f'Hello {name}'; print(greet('John'));",
+    "tags": ["python", "functions"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain decorators.",
+    "detailedAnswer": "Decorators modify function behavior using @ syntax.",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Create a decorator.",
+    "detailedAnswer": "def decorator(func): def wrapper(*args): return func(*args); return wrapper",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What are list comprehensions?",
+    "detailedAnswer": "Concise way to create lists: [x*2 for x in range(5)]",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Use list comprehension.",
+    "detailedAnswer": "squares = [x**2 for x in range(10)]; evens = [x for x in range(10) if x%2==0]",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is lambda?",
+    "detailedAnswer": "Anonymous function: lambda x: x*2",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Use lambda with map.",
+    "detailedAnswer": "result = list(map(lambda x: x*2, [1,2,3])); # [2, 4, 6]",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Recursive factorial.",
+    "detailedAnswer": "def fact(n): return 1 if n==0 else n*fact(n-1)",
+    "tags": ["python", "recursion"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Implement quicksort.",
+    "detailedAnswer": "def quicksort(arr): return arr if len(arr)<=1 else quicksort([x for x in arr[1:] if x<=arr[0]]) + [arr[0]] + quicksort([x for x in arr[1:] if x>arr[0]])",
+    "tags": ["python", "sorting"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What are generators?",
+    "detailedAnswer": "Functions that yield values instead of returning, useful for memory efficiency.",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Create a generator.",
+    "detailedAnswer": "def gen(): for i in range(5): yield i; for val in gen(): print(val)",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain context managers.",
+    "detailedAnswer": "With statement for resource management (__enter__ and __exit__).",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Python",
+    "type": "coding",
+    "difficulty": "Hard",
+    "question": "Use context manager.",
+    "detailedAnswer": "with open('file.txt') as f: content = f.read();",
+    "tags": ["python", "advanced"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is Software Testing?",
+    "detailedAnswer": "Process of validating software to find defects.",
+    "tags": ["testing", "basics"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Explain black box testing.",
+    "detailedAnswer": "Testing without knowledge of internal code structure.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "What is white box testing?",
+    "detailedAnswer": "Testing with knowledge of internal code structure.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Easy",
+    "question": "Explain unit testing.",
+    "detailedAnswer": "Testing individual code units/functions in isolation.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "coding",
+    "difficulty": "Easy",
+    "question": "Write simple unit test.",
+    "detailedAnswer": "test('addition', () => { expect(2+2).toBe(4); });",
+    "tags": ["testing", "unit"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain STLC.",
+    "detailedAnswer": "Requirement analysis, planning, case design, execution and closure.",
+    "tags": ["testing", "stlc"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is sanity testing?",
+    "detailedAnswer": "Quick test to verify basic functionality after minor changes.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "Explain smoke testing.",
+    "detailedAnswer": "Broad test to verify overall system stability.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Medium",
+    "question": "What is regression testing?",
+    "detailedAnswer": "Re-testing existing functionality after changes.",
+    "tags": ["testing", "types"]
+  },
+  {
+    "category": "Testing",
+    "type": "coding",
+    "difficulty": "Medium",
+    "question": "Write test cases for login.",
+    "detailedAnswer": "Test valid login, invalid credentials, empty fields, SQL injection.",
+    "tags": ["testing", "testcases"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is boundary testing?",
+    "detailedAnswer": "Test edge values and limits of input ranges.",
+    "tags": ["testing", "techniques"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "Explain equivalence partitioning.",
+    "detailedAnswer": "Divide input into valid/invalid partitions and test one value from each.",
+    "tags": ["testing", "techniques"]
+  },
+  {
+    "category": "Testing",
+    "type": "practical",
+    "difficulty": "Hard",
+    "question": "Write test cases for login page.",
+    "detailedAnswer": "Test valid login, invalid login, empty fields, SQL injection and session timeout.",
+    "tags": ["testing", "testcases"]
+  },
+  {
+    "category": "Testing",
+    "type": "theory",
+    "difficulty": "Hard",
+    "question": "What is mutation testing?",
+    "detailedAnswer": "Intentionally introduce bugs to verify test quality.",
+    "tags": ["testing", "techniques"]
+  }
+]

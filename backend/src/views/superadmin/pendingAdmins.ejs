@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pending Admins</title>
+  </head>
+  <body>
+    <h1>Pending Admin Approval Requests</h1>
+    <ul>
+      <% pending.forEach(function(p) { %>
+        <li>
+          <%= p.adminId.email %>
+          <form method="POST" action="/superadmin/approve/<%= p._id %>" style="display:inline">
+            <button type="submit">Approve</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
