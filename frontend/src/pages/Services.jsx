@@ -9,7 +9,7 @@ export default function Services() {
     {
       icon: <FaCode />,
       title: 'Practice Questions',
-      description: '72+ curated interview questions across multiple technologies'
+      description: '1000+ curated interview questions across multiple technologies'
     },
     {
       icon: <FaGraduationCap />,

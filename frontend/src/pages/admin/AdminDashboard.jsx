@@ -589,185 +589,341 @@
 //   );
 // }
 
+// // AdminDashboard.js - Main admin panel for managing questions and users
 
+// import React, { useState, useEffect, useContext } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { AuthContext } from '../../context/AuthContext';
+// import { ThemeContext } from '../../context/ThemeContext';
+// import api from '../../services/api';
+// import { FaUser, FaQuestion, FaCog, FaSignOutAlt, FaTimes } from 'react-icons/fa';
 
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import { ThemeContext } from '../../context/ThemeContext';
-import api from '../../services/api';
-import { FaUser, FaQuestion, FaCog, FaSignOutAlt, FaTimes } from 'react-icons/fa';
+// export default function AdminDashboard() {
+//   const { user, logout } = useContext(AuthContext);
+//   const { isDark } = useContext(ThemeContext);
+//   const navigate = useNavigate();
+  
+//   const [activeTab, setActiveTab] = useState('questions');
+//   const [questions, setQuestions] = useState([]);
+//   const [users, setUsers] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [showAddForm, setShowAddForm] = useState(false);
+//   const [editingId, setEditingId] = useState(null);
+//   const [formData, setFormData] = useState({
+//     category: '',
+//     type: '',
+//     difficulty: '',
+//     question: '',
+//     detailedAnswer: '',
+//     tags: ''
+//   });
+//   const [errors, setErrors] = useState({});
+//   const [filterCategory, setFilterCategory] = useState('');
+//   const [filterDifficulty, setFilterDifficulty] = useState('');
+//   const [filterType, setFilterType] = useState('');
+
+//   useEffect(() => {
+//     if (!user || user.role !== 'admin') {
+//       navigate('/login');
+//       return;
+//     }
+//     if (activeTab === 'questions') {
+//       loadQuestions();
+//     } else if (activeTab === 'users') {
+//       loadUsers();
+//     }
+//   }, [user, navigate, filterCategory, filterDifficulty, filterType, activeTab]);
+
+//   const loadUsers = async () => {
+//     try {
+//       setLoading(true);
+//       const response = await api.get('/users/all');
+//       setUsers(response.data || []);
+//     } catch (err) {
+//       console.error('Failed to load users:', err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const loadQuestions = async () => {
+//     try {
+//       setLoading(true);
+//       const params = new URLSearchParams();
+//       if (filterCategory) params.append('category', filterCategory);
+//       if (filterDifficulty) params.append('difficulty', filterDifficulty);
+//       if (filterType) params.append('type', filterType);
+//       const response = await api.get(`/questions?${params}`);
+//       setQuestions(response.data);
+//     } catch (err) {
+//       console.error('Failed to load questions:', err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const validateForm = () => {
+//     const newErrors = {};
+//     if (!formData.category) newErrors.category = 'Category required';
+//     if (!formData.question) newErrors.question = 'Question required';
+//     if (!formData.difficulty) newErrors.difficulty = 'Difficulty required';
+//     if (!formData.detailedAnswer) newErrors.detailedAnswer = 'Answer required';
+//     setErrors(newErrors);
+//     return Object.keys(newErrors).length === 0;
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateForm()) return;
+
+//     try {
+//       setLoading(true);
+//       const payload = {
+//         ...formData,
+//         tags: formData.tags.split(',').map(t => t.trim()).filter(t => t)
+//       };
+
+//       if (editingId) {
+//         await api.put(`/questions/${editingId}`, payload);
+//       } else {
+//         await api.post('/questions/add', payload);
+//       }
+
+//       setFormData({
+//         category: '',
+//         type: '',
+//         difficulty: '',
+//         question: '',
+//         detailedAnswer: '',
+//         tags: ''
+//       });
+//       setEditingId(null);
+//       setShowAddForm(false);
+//       loadQuestions();
+//     } catch (err) {
+//       console.error('Failed to save question:', err);
+//       alert('Error: ' + (err.response?.data?.error || 'Failed to save question'));
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleEdit = (question) => {
+//     setEditingId(question._id);
+//     setFormData({
+//       category: question.category,
+//       type: question.type || '',
+//       difficulty: question.difficulty,
+//       question: question.question,
+//       detailedAnswer: question.detailedAnswer,
+//       tags: question.tags ? question.tags.join(', ') : ''
+//     });
+//     setShowAddForm(true);
+//   };
+
+//   const handleDelete = async (id) => {
+//     if (!window.confirm('Delete this question?')) return;
+//     try {
+//       await api.delete(`/questions/${id}`);
+//       loadQuestions();
+//     } catch (err) {
+//       alert('Failed to delete: ' + err.response?.data?.error);
+//     }
+//   };
+
+//   const handleDeleteUser = async (userId) => {
+//     if (!window.confirm('Are you sure you want to remove this user?')) return;
+//     try {
+//       await api.delete(`/users/${userId}`);
+//       loadUsers();
+//     } catch (err) {
+//       alert('Failed to remove user: ' + err.response?.data?.error);
+//     }
+//   };
+
+//   const handleBlacklistUser = async (userId, isBlacklisted) => {
+//     try {
+//       await api.put(`/users/${userId}/blacklist`, { blacklisted: !isBlacklisted });
+//       loadUsers();
+//     } catch (err) {
+//       alert('Failed to update user: ' + err.response?.data?.error);
+//     }
+//   };
+
+//   // ✅ FIXED ERROR HERE (proper function added)
+//   const handleCancel = () => {
+//     setShowAddForm(false);
+//     setEditingId(null);
+//     setFormData({
+//       category: '',
+//       type: '',
+//       difficulty: '',
+//       question: '',
+//       detailedAnswer: '',
+//       tags: ''
+//     });
+//     setErrors({});
+//   };
+
+//   return (
+//     <div className={`min-h-screen flex ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
+//       {/* Your entire JSX remains EXACTLY the same */}
+//     </div>
+//   );
+// }
+
+import React, { useState } from "react";
+// import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function AdminDashboard() {
-  const { user, logout } = useContext(AuthContext);
-  const { isDark } = useContext(ThemeContext);
-  const navigate = useNavigate();
-  
-  const [activeTab, setActiveTab] = useState('questions');
-  const [questions, setQuestions] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [formData, setFormData] = useState({
-    category: '',
-    type: '',
-    difficulty: '',
-    question: '',
-    detailedAnswer: '',
-    tags: ''
-  });
-  const [errors, setErrors] = useState({});
-  const [filterCategory, setFilterCategory] = useState('');
-  const [filterDifficulty, setFilterDifficulty] = useState('');
-  const [filterType, setFilterType] = useState('');
+  const { user, logout } = useAuth();
+  const { isDark } = useTheme();
 
-  useEffect(() => {
-    if (!user || user.role !== 'admin') {
-      navigate('/login');
-      return;
-    }
-    if (activeTab === 'questions') {
-      loadQuestions();
-    } else if (activeTab === 'users') {
-      loadUsers();
-    }
-  }, [user, navigate, filterCategory, filterDifficulty, filterType, activeTab]);
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [course, setCourse] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [type, setType] = useState("");
 
-  const loadUsers = async () => {
-    try {
-      setLoading(true);
-      const response = await api.get('/users/all');
-      setUsers(response.data || []);
-    } catch (err) {
-      console.error('Failed to load users:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const loadQuestions = async () => {
-    try {
-      setLoading(true);
-      const params = new URLSearchParams();
-      if (filterCategory) params.append('category', filterCategory);
-      if (filterDifficulty) params.append('difficulty', filterDifficulty);
-      if (filterType) params.append('type', filterType);
-      const response = await api.get(`/questions?${params}`);
-      setQuestions(response.data);
-    } catch (err) {
-      console.error('Failed to load questions:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.category) newErrors.category = 'Category required';
-    if (!formData.question) newErrors.question = 'Question required';
-    if (!formData.difficulty) newErrors.difficulty = 'Difficulty required';
-    if (!formData.detailedAnswer) newErrors.detailedAnswer = 'Answer required';
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
-      setLoading(true);
-      const payload = {
-        ...formData,
-        tags: formData.tags.split(',').map(t => t.trim()).filter(t => t)
-      };
-
-      if (editingId) {
-        await api.put(`/questions/${editingId}`, payload);
-      } else {
-        await api.post('/questions/add', payload);
-      }
-
-      setFormData({
-        category: '',
-        type: '',
-        difficulty: '',
-        question: '',
-        detailedAnswer: '',
-        tags: ''
-      });
-      setEditingId(null);
-      setShowAddForm(false);
-      loadQuestions();
-    } catch (err) {
-      console.error('Failed to save question:', err);
-      alert('Error: ' + (err.response?.data?.error || 'Failed to save question'));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleEdit = (question) => {
-    setEditingId(question._id);
-    setFormData({
-      category: question.category,
-      type: question.type || '',
-      difficulty: question.difficulty,
-      question: question.question,
-      detailedAnswer: question.detailedAnswer,
-      tags: question.tags ? question.tags.join(', ') : ''
-    });
-    setShowAddForm(true);
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm('Delete this question?')) return;
-    try {
-      await api.delete(`/questions/${id}`);
-      loadQuestions();
-    } catch (err) {
-      alert('Failed to delete: ' + err.response?.data?.error);
-    }
-  };
-
-  const handleDeleteUser = async (userId) => {
-    if (!window.confirm('Are you sure you want to remove this user?')) return;
-    try {
-      await api.delete(`/users/${userId}`);
-      loadUsers();
-    } catch (err) {
-      alert('Failed to remove user: ' + err.response?.data?.error);
-    }
-  };
-
-  const handleBlacklistUser = async (userId, isBlacklisted) => {
-    try {
-      await api.put(`/users/${userId}/blacklist`, { blacklisted: !isBlacklisted });
-      loadUsers();
-    } catch (err) {
-      alert('Failed to update user: ' + err.response?.data?.error);
-    }
-  };
-
-  // ✅ FIXED ERROR HERE (proper function added)
-  const handleCancel = () => {
-    setShowAddForm(false);
-    setEditingId(null);
-    setFormData({
-      category: '',
-      type: '',
-      difficulty: '',
-      question: '',
-      detailedAnswer: '',
-      tags: ''
-    });
-    setErrors({});
-  };
+  const courses = ["Java", "Python", "MERN", "Testing"];
+  const difficulties = ["Easy", "Medium", "Hard"];
+  const types = ["Coding", "Theory"];
 
   return (
-    <div className={`min-h-screen flex ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
-      {/* Your entire JSX remains EXACTLY the same */}
+    <div className="flex min-h-screen">
+
+      {/* Sidebar */}
+      <aside className={`w-64 p-6 ${isDark ? "bg-gray-900 text-white" : "bg-white shadow-md"}`}>
+        <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
+
+        {["dashboard", "questions", "add", "users", "settings"].map(tab => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`block w-full text-left px-4 py-2 rounded-lg mb-2 transition ${
+              activeTab === tab
+                ? "bg-blue-600 text-white"
+                : isDark ? "hover:bg-gray-700" : "hover:bg-gray-100"
+            }`}
+          >
+            {tab.toUpperCase()}
+          </button>
+        ))}
+
+        <button
+          onClick={logout}
+          className="mt-6 w-full bg-red-600 text-white py-2 rounded-lg"
+        >
+          Logout
+        </button>
+      </aside>
+
+      {/* Main Section */}
+      <main className="flex-1 p-8">
+
+        {/* Profile Card */}
+        {activeTab === "dashboard" && (
+          <>
+            <div className={`p-6 rounded-xl shadow-md mb-8 ${
+              isDark ? "bg-gray-800 text-white" : "bg-white"
+            }`}>
+              <h3 className="text-xl font-bold mb-2">Admin Profile</h3>
+              <p>Name: {user?.username}</p>
+              <p>Email: {user?.email}</p>
+            </div>
+
+            {/* Stats Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6 rounded-xl shadow">
+                <h4>Total Questions</h4>
+                <p className="text-2xl font-bold">120</p>
+              </div>
+              <div className="bg-gradient-to-br from-green-500 to-teal-600 text-white p-6 rounded-xl shadow">
+                <h4>Total Users</h4>
+                <p className="text-2xl font-bold">80</p>
+              </div>
+              <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white p-6 rounded-xl shadow">
+                <h4>Pending Requests</h4>
+                <p className="text-2xl font-bold">5</p>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Question Management */}
+        {activeTab === "questions" && (
+          <>
+            {/* Filters */}
+            <div className="mb-6">
+              <h3 className="font-bold mb-3">Filters</h3>
+
+              <div className="flex gap-4 overflow-x-auto mb-4">
+                {courses.map(c => (
+                  <button
+                    key={c}
+                    onClick={() => setCourse(c)}
+                    className={`px-4 py-2 rounded-full ${
+                      course === c ? "bg-blue-600 text-white" : "bg-gray-200"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex gap-4 overflow-x-auto mb-4">
+                {difficulties.map(d => (
+                  <button
+                    key={d}
+                    onClick={() => setDifficulty(d)}
+                    className={`px-4 py-2 rounded-full ${
+                      difficulty === d ? "bg-purple-600 text-white" : "bg-gray-200"
+                    }`}
+                  >
+                    {d}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex gap-4 overflow-x-auto">
+                {types.map(t => (
+                  <button
+                    key={t}
+                    onClick={() => setType(t)}
+                    className={`px-4 py-2 rounded-full ${
+                      type === t ? "bg-green-600 text-white" : "bg-gray-200"
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Question Cards */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {[1,2,3].map((q) => (
+                <div key={q} className={`p-6 rounded-xl shadow ${
+                  isDark ? "bg-gray-800 text-white" : "bg-white"
+                }`}>
+                  <h4 className="font-bold mb-2">Sample Question {q}</h4>
+                  <p className="text-sm mb-4">Course: MERN | Medium | Coding</p>
+
+                  <div className="flex gap-3">
+                    <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg">
+                      Update
+                    </button>
+                    <button className="bg-red-600 text-white px-4 py-2 rounded-lg">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+      </main>
     </div>
   );
 }

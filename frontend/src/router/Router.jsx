@@ -3,97 +3,72 @@
 // import Navbar from '../components/Navbar'
 
 // // Pages
-// import Home from '../pages/Home'
-// import About from '../pages/About'
-// import Services from '../pages/Services'
-// import Contact from '../pages/Contact'
-// import FAQ from '../pages/FAQ'
-// import Login from '../pages/auth/Login'
-// import Register from '../pages/auth/Register'
-// import ForgotPassword from '../pages/auth/ForgotPassword'
-// import Dashboard from '../pages/user/Dashboard'
-// import AdminDashboard from '../pages/admin/AdminDashboard'
-// import SuperAdminPanel from '../pages/superadmin/SuperAdminPanel'
+import React from "react";
+import { createBrowserRouter } from "react-router-dom";
 
-// // Root layout with Navbar
-// const RootLayout = () => (
-//   <>
-//     <Navbar />
-//     <Outlet /> {/* renders child routes */}
-//   </>
-// )
+import Navbar from "../components/Navbar";
+import BackToTop from "../components/BackToTop";
 
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <RootLayout />,
-//     children: [
-//       { path: '/', element: <Home /> },
-//       { path: '/about', element: <About /> },
-//       { path: '/services', element: <Services /> },
-//       { path: '/contact', element: <Contact /> },
-//       { path: '/faq', element: <FAQ /> },
-//       { path: '/dashboard', element: <Dashboard /> },
-//       { path: '/admin/dashboard', element: <AdminDashboard /> },
-//       { path: '/superadmin/panel', element: <SuperAdminPanel /> },
-//     ],
-//   },
-//   { path: '/login', element: <Login /> },
-//   { path: '/register', element: <Register /> },
-//   { path: '/forgot-password', element: <ForgotPassword /> },
-// ])
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import FAQ from "../pages/FAQ";
+import Services from "../pages/Services";
 
-// export default function Router() {
-//   return <RouterProvider router={router} />
-// }
-import React from 'react'
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
+import ForgotPassword from "../pages/auth/ForgotPassword";
 
-// Pages
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Services from '../pages/Services'
-import Contact from '../pages/Contact'
-import FAQ from '../pages/FAQ'
-import Login from '../pages/auth/Login'
-import Register from '../pages/auth/Register'
-import ForgotPassword from '../pages/auth/ForgotPassword'
-import Dashboard from '../pages/user/Dashboard'
-import AdminDashboard from '../pages/admin/AdminDashboard'
-import SuperAdminPanel from '../pages/superadmin/SuperAdminPanel'
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import SuperAdminPanel from "../pages/superadmin/SuperAdminPanel";
+import Dashboard from "../pages/user/Dashboard";
 
-/* Layout with Navbar */
-const RootLayout = () => (
-  <>
-    <Navbar />
-    <Outlet />
-  </>
-)
+import { Outlet } from "react-router-dom";
 
+/* 🔥 Global Layout */
+function MainLayout() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      
+      {/* Navbar Visible Everywhere */}
+      <Navbar />
+
+      {/* Page Content */}
+      <div className="flex-1">
+        <Outlet />
+      </div>
+
+      {/* Back To Top Visible Everywhere */}
+      <BackToTop />
+
+    </div>
+  );
+}
+
+/* 🔥 Create Router */
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <RootLayout />,
+    path: "/",
+    element: <MainLayout />,
     children: [
+      // Public
       { index: true, element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "faq", element: <FAQ /> },
+      { path: "services", element: <Services /> },
 
-      { path: 'about', element: <About /> },
-      { path: 'services', element: <Services /> },
-      { path: 'contact', element: <Contact /> },
-      { path: 'faq', element: <FAQ /> },
+      // Auth
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      { path: "forgot-password", element: <ForgotPassword /> },
 
-      { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
-      { path: 'forgot-password', element: <ForgotPassword /> },
-
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'admin/dashboard', element: <AdminDashboard /> },
-      { path: 'superadmin/panel', element: <SuperAdminPanel /> },
+      // Role Dashboards
+      { path: "admin", element: <AdminDashboard /> },
+      { path: "superadmin", element: <SuperAdminPanel /> },
+      { path: "dashboard", element: <Dashboard /> },
     ],
   },
-])
+]);
 
-export default function Router() {
-  return <RouterProvider router={router} />
-}
+export default router;
